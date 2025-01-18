@@ -8,7 +8,11 @@ const UnityCard = ({unity}) => {
             <img src={`http://localhost:1337${unity.image.url}`} alt="" className="rounded-md"/>
             <div className="flex flex-col grow gap-3">
                 <h2 className="pt-5 line-clamp-2">{unity.name}</h2>
-                <p className="line-clamp-4">{unity.description}</p>
+                <p className="line-clamp-4 lg:line-clamp-[6]">
+                    {unity.description.map((paragraph: any, index: number) => (
+                        <span key={index}>{paragraph.children[0].text}</span>
+                    ))}
+                </p>
             </div>
         </Link>
     );

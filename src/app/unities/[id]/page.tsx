@@ -13,7 +13,11 @@ export default async function Unity({params}: any): Promise<JSX.Element> {
         </div>
         <div className="flex flex-col py-4 gap-8">
             <h1 className="pt-5">{unity.name}</h1>
-            <p>{unity.description}</p>
+            <div className="flex flex-col gap-4">
+                {unity.description.map((paragraph: any, index: number) => (
+                    <p key={index}>{paragraph.children[0].text}</p>
+                ))}
+            </div>
         </div>
     </main>
   );
