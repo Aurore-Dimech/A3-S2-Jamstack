@@ -1,16 +1,20 @@
-"use client";
+import React from 'react';
 
-import Button from "./components/Button";
-
-export default function Home() {
-  const handleClick = () => {
-    console.log('world');
-  };
+export default async function Home(): Promise<JSX.Element> {
+  const result = await fetch("http://localhost:1337/api/faction?populate=*");
+  const data = await result.json()
 
   return (
-    <div className="flex flex-col items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-3xl ">Hello</h1>
-      <Button label="Appuyez ici" onClick={handleClick} />
+    <div className="flex flex-col items-center justify-items-center min-h-screen gap-16 font-[family-name:var(--font-geist-sans)]">
+      <div className='relative'>
+        <img src={`http://localhost:1337${data.data.cover.url}`} alt=""/>
+        <h1 className="absolute bottom-10 pl-20" >{data.data.name}</h1>
+      </div>
+      <div className='px-20 flex flex-col gap-8'>
+        {data.data.description.map((paragraph: any, index: number) => (
+          <p key={index}>{paragraph.children[0].text}</p>
+        ))}
+      </div>
     </div>
   );
 }
