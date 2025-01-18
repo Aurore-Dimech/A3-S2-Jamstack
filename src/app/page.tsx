@@ -11,7 +11,7 @@ export default async function Home(): Promise<JSX.Element> {
         <h1 className="absolute bottom-5 md:bottom-10 pl-10 md:pl-20" >{data.data.name}</h1>
       </div>
       <div className='px-8 md:px-20 flex flex-col gap-8'>
-        {data.data.description.map((paragraph: any, index: number) => (
+        {data.data.description.map((paragraph: array, index: number) => (
           <p key={index}>{paragraph.children[0].text}</p>
         ))}
       </div>

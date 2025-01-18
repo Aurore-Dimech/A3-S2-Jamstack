@@ -1,13 +1,11 @@
 import React from 'react';
 import Image from 'next/image'
 
-export default async function Hero({params}: any): Promise<JSX.Element> {
-    const { id } = await params
-    const result = await fetch(`http://localhost:1337/api/heroes?populate=*&filters[uid][$eq]=${id}`);
+export default async function Hero({params}): Promise<JSX.Element> {
+    const { slug } = await params
+    const result = await fetch(`http://localhost:1337/api/heroes/${slug}?populate=*`);
     const data = await result.json();
-    const hero = data.data[0];
-
-    console.log(hero)
+    const hero = data.data;
 
   return (
     <>
@@ -25,7 +23,7 @@ export default async function Hero({params}: any): Promise<JSX.Element> {
               <img src={`http://localhost:1337${hero.image.url}`} alt="" className="rounded-md"/>
             </div>
             <p>
-              {hero.description.map((paragraph: any, index: number) => (
+              {hero.description.map((paragraph: array, index: number) => (
                 <span key={index} className={index == 0 ? null : "block pt-5"}>{paragraph.children[0].text}</span>
               ))}
             </p>
