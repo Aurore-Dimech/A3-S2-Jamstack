@@ -11,7 +11,12 @@ type Unity = {
 }
 
 export default async function Unities(): Promise<JSX.Element> {
-    const result = await fetch("http://localhost:1337/api/unities?populate=*");
+    const result = await fetch("https://a3-s2-jamstack-api-production.up.railway.app/api/unities?populate=*", {
+        headers: {
+          'Authorization': `Bearer ${process.env.API_TOKEN_RAILWAY}`,
+          'Content-Type': 'application/json'
+        }
+    });
     const data = await result.json()
 
     return (
