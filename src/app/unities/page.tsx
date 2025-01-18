@@ -9,7 +9,7 @@ export default async function Unities(): Promise<JSX.Element> {
     return (
         <>
         <PageTitle title="Les unités" />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-40">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-10 md:mx-40">
             {data.data.map((unity: any, index: any) => (
                 <UnityCard unity={unity} key={index}/>
             ))}

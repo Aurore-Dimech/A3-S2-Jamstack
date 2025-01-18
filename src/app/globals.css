@@ -25,13 +25,13 @@ h1, h2, h3, h4, h5, p, a, span {
 }
 
 h1 {
-  @apply text-5xl font-semibold leading-tight
+  @apply text-2xl md:text-5xl font-semibold leading-tight
 }
 
 h2 {
-  @apply text-2xl font-semibold leading-tight
+  @apply text-xl md:text-2xl font-semibold leading-tight
 }
 
 p {
-  @apply leading-7
+  @apply leading-7 text-sm md:text-base ;
 }

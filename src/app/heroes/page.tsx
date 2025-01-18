@@ -9,7 +9,7 @@ export default async function Heroes(): Promise<JSX.Element> {
     return (
         <>
         <PageTitle title="Les héroïnes" />
-        <div className="flex flex-col gap-8 mx-20">
+        <div className="flex flex-col gap-8 mx-10 md:mx-20">
             {data.data.map((hero: any, index: any) => (
                 <HeroCard hero={hero} key={index}/>
             ))}
